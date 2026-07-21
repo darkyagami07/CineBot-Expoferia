@@ -3,31 +3,32 @@ package interfaz;
 import java.util.Scanner;
 
 public class Registro {
-    
-    String nombre ;
-    String apellido ;
-    String genero ;
-    int fechaNacimiento ;
 
-    public void iniciar (){
+    String nombre;
+    String apellido;
+    String genero;
+    int fechaNacimiento;
 
+    public void iniciar() {
 
         Scanner sc = new Scanner(System.in);
-        ProcesadorPLN procesador = new ProcesadorPLN(); 
+        
+        ProcesadorPLN procesador = new ProcesadorPLN();
+        MotorRecomendaciones motor = new MotorRecomendaciones();
+
         System.out.println("Bienvenidos al CineBot");
         System.out.println("Por favor complete el registro inicial");
 
-        System.out.println("Nombre: ");
-
+        System.out.print("Nombre: ");
         this.nombre = sc.nextLine();
 
-        System.out.println("Apellido: ");
+        System.out.print("Apellido: ");
         this.apellido = sc.nextLine();
 
-        System.out.println("Genero: ");
+        System.out.print("Genero: ");
         this.genero = sc.nextLine();
 
-        System.out.println("Ano de nacimiento: ");
+        System.out.print("Ano de nacimiento: ");
         this.fechaNacimiento = sc.nextInt();
 
         sc.nextLine();
@@ -37,19 +38,22 @@ public class Registro {
 
         String entradaUsuario = "";
 
-        while(true) {
-            System.out.println("Tu: ");
+        while (true) {
+            System.out.print("Tu: ");
             entradaUsuario = sc.nextLine();
 
             if (entradaUsuario.trim().equalsIgnoreCase("salir")) {
-                System.out.println("CineBot: Ha sido un placer hablar contigo. Hasta luego!");
+                System.out.println("CineBot: Ha sido un placer hablar contigo. ¡Hasta luego!");
                 break;
             }
 
-            System.out.println("CineBot: Entendido. En que mas te puedo ayudar?");
+            String textoProcesado = procesador.procesadorTexto(entradaUsuario);
+
+            String respuestaBot = motor.buscarMejorPelicula(textoProcesado);
+
+            System.out.println("CineBot: " + respuestaBot + "\n");
         }
 
         sc.close();
     }
-
 }

@@ -1,9 +1,11 @@
 package datos;
 
-import modelo.Usuario;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import modelo.Usuario;
+
 import java.io.File;
 
 public class GestorPersistencia {
@@ -22,7 +24,7 @@ public class GestorPersistencia {
             String linea = String.format("%s,%s,%d,%s",
                     usuario.getNombre(),
                     usuario.getGenero(),
-                    usuario.getAnioNacimiento(),
+                    usuario.getAñoNacimiento(),
                     usuario.getPeliculaRecomendada());
             bw.write(linea);
             bw.newLine();

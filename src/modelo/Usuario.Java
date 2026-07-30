@@ -1,6 +1,7 @@
 package modelo;
 
 public class Usuario {
+
     private String nombre;
     private String genero;
     private int añoNacimiento;
@@ -25,4 +26,5 @@ public class Usuario {
     public int getEdad(int añoActual) {
         return añoActual - this.añoNacimiento;
     }
+
 }
